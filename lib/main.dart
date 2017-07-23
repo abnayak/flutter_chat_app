@@ -19,26 +19,41 @@ class _ChatWindowState extends State<ChatWindow> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(title: new Text("Chat App")),
-        body: _buildTextComposer()
-    );
+        body: _buildTextComposer());
   }
 
   Widget _buildTextComposer() {
     return new Container(
-        margin: new EdgeInsets.all(8.0),
-        child: _buildTextField()
+      margin: new EdgeInsets.all(8.0),
+      child: new Row(
+        children: <Widget>[],
+      ),
     );
+  }
+
+  Widget _buildSendButton() {
+    return new Container(
+      margin: new EdgeInsets.symmetric()
+    );
+
+
+    new IconButton(icon: new Icon(Icons.send), onPressed: _onSendpressed)
   }
 
   Widget _buildTextField() {
-    return new TextField(
+    return new Flexible(
+        child: new TextField(
       decoration: new InputDecoration(hintText: "Input Text Here"),
       controller: _textEditingController,
       onSubmitted: _onSubmitted,
-    );
+    ));
   }
 
   void _onSubmitted(String value) {
+    _textEditingController.clear();
+  }
+
+  void _onSendpressed() {
   }
 }
 
